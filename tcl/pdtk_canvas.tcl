@@ -180,6 +180,10 @@ proc pdtk_canvas_saveas {name initialfile initialdir destroyflag} {
 proc ::pdtk_canvas::pdtk_canvas_menuclose {mytoplevel reply_to_pd} {
     raise $mytoplevel
     set filename [wm title $mytoplevel]
+    if {[string length $filename] > 6} {
+        # remove " *edit*" suffix when displaying filename
+        set filename [regsub { \*edit\*$} $filename ""]
+    }
     set message [format {Do you want to save the changes you made in "%s"?} $filename]
     set answer [tk_messageBox -message $message -type yesnocancel -default "yes" \
                     -parent $mytoplevel -icon question]
