@@ -282,7 +282,7 @@ proc init_for_platform {} {
     # guarantees that patches will be pixel-exact on every platform
     # 2013.07.19 msp - trying without this to see what breaks - it's having
     # deleterious effects on dialog window font sizes.
-    # tk scaling 1
+    tk scaling 1.7
 
     switch -- $::windowingsystem {
         "x11" {
